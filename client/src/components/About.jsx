@@ -30,10 +30,10 @@ const About = () => {
           {/* About text and Languages */}
           <Col lg={7} data-aos="fade-left" data-aos-duration="1000">
             <h2 className="section-title">About Me</h2>
-            <p className="lead mb-4" style={{ color: "var(--text-primary)", fontWeight: "500" }}>
+            <p className="lead mb-4 justify-text" style={{ color: "var(--text-primary)", fontWeight: "500" }}>
               I am an {personalInfo.title} currently pursuing my academic milestones.
             </p>
-            <p className="mb-4" style={{ color: "var(--text-secondary)", fontSize: "1.1rem" }}>
+            <p className="mb-4 justify-text" style={{ color: "var(--text-secondary)", fontSize: "1.1rem" }}>
               {personalInfo.summary}
             </p>
 

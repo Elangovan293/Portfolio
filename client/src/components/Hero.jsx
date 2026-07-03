@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { personalInfo } from "../data/data";
+import resumePdf from "../assets/Resume.pdf";
 
 const roles = ["AI Full Stack Developer", "Python Developer", "Problem Solver"];
 
@@ -156,7 +157,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
               className="col-lg-8 ps-0 mx-auto mx-lg-0"
             >
-              <p className="lead mb-5 text-muted-custom" style={{ color: "var(--text-secondary)" }}>
+              <p className="lead mb-5 text-muted-custom justify-text" style={{ color: "var(--text-secondary)" }}>
                 {personalInfo.summary}
               </p>
             </motion.div>
@@ -170,16 +171,17 @@ const Hero = () => {
               <a 
                 href="#contact" 
                 onClick={handleScrollToContact}
-                className="btn btn-accent px-5 py-3 fs-5"
+                className="btn btn-accent fs-5 d-inline-flex align-items-center justify-content-center"
+                style={{ height: "56px", padding: "0 2rem" }}
               >
                 Hire Me
               </a>
               
-              {/* TODO: Verify resume.pdf is uploaded in /public/resume.pdf */}
               <a 
-                href={personalInfo.resumeUrl} 
+                href={resumePdf} 
                 download="Elangovan_K_Resume.pdf"
-                className="btn btn-outline-accent px-5 py-3 fs-5"
+                className="btn btn-outline-accent fs-5 d-inline-flex align-items-center justify-content-center"
+                style={{ height: "56px", padding: "0 2rem" }}
               >
                 Download Resume
               </a>

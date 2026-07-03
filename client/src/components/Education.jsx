@@ -54,7 +54,7 @@ const Education = () => {
                   Status: <span style={{ color: "var(--accent-color)" }}>{edu.status}</span>
                 </p>
                 
-                <p className="mb-0" style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
+                <p className="mb-0 justify-text" style={{ color: "var(--text-secondary)", fontSize: "0.95rem" }}>
                   {edu.details}
                 </p>
               </div>

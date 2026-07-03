@@ -70,9 +70,9 @@ const Skills = () => {
             </h3>
           </Col>
           
-          <Row className="g-4">
+          <Row className="g-4 justify-content-center">
             {coreSkills.map((skill, index) => (
-              <Col md={6} lg={3} key={index} data-aos="fade-up" data-aos-delay={index * 150}>
+              <Col md={6} lg={4} key={index} data-aos="fade-up" data-aos-delay={index * 150}>
                 <div className="glass-card core-skill-card">
                   <div className="core-skill-icon-wrapper">
                     {getIcon(skill.icon)}
@@ -80,7 +80,7 @@ const Skills = () => {
                   <h4 className="h5 mb-3" style={{ fontFamily: "var(--font-heading)" }}>
                     {skill.name}
                   </h4>
-                  <p className="small mb-0" style={{ color: "var(--text-secondary)" }}>
+                  <p className="small mb-0 justify-text" style={{ color: "var(--text-secondary)" }}>
                     {skill.description}
                   </p>
                 </div>

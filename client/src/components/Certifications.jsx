@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaCertificate, FaAward } from "react-icons/fa";
+import { FaCertificate, FaExternalLinkAlt } from "react-icons/fa";
 import { certifications } from "../data/data";
 
 const Certifications = () => {
   return (
     <section 
-      id="certifications" 
+      id="certificates" 
       className="py-5" 
       style={{ 
         backgroundColor: "var(--bg-primary)",
@@ -14,24 +14,80 @@ const Certifications = () => {
       }}
     >
       <Container className="py-5">
-        <h2 className="section-title section-title-center">Certifications</h2>
+        <h2 className="section-title section-title-center">Certificates</h2>
 
-        <div 
-          className="d-flex flex-wrap justify-content-center gap-3 mt-4"
-          data-aos="fade-up"
-          data-aos-duration="1000"
-        >
+        <Row className="g-4 mt-4 justify-content-center">
           {certifications.map((cert, index) => (
-            <div 
+            <Col 
               key={index} 
-              className="cert-badge"
-              style={{ fontSize: "1.1rem", padding: "0.8rem 1.6rem" }}
+              xs={12} 
+              md={6} 
+              lg={5}
+              data-aos="zoom-in" 
+              data-aos-delay={index * 100}
             >
-              <FaAward className="cert-icon" size={18} />
-              <span>{cert}</span>
-            </div>
+              <a 
+                href={cert.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-decoration-none d-block h-100"
+              >
+                <div 
+                  className="glass-card p-4 h-100 d-flex align-items-center justify-content-between gap-3"
+                  style={{
+                    cursor: "pointer",
+                    border: "1px solid var(--border-color)",
+                    transition: "var(--transition-smooth)"
+                  }}
+                >
+                  <div className="d-flex align-items-center gap-3">
+                    <div 
+                      className="d-flex align-items-center justify-content-center"
+                      style={{
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "12px",
+                        backgroundColor: "rgba(var(--accent-rgb), 0.1)",
+                        color: "var(--accent-color)"
+                      }}
+                    >
+                      <FaCertificate size={26} />
+                    </div>
+                    <div>
+                      <h3 
+                        className="h5 mb-0" 
+                        style={{ 
+                          color: "var(--text-primary)", 
+                          fontFamily: "var(--font-heading)",
+                          fontWeight: "600"
+                        }}
+                      >
+                        {cert.title}
+                      </h3>
+                      <span 
+                        className="small text-muted"
+                        style={{ fontSize: "0.85rem" }}
+                      >
+                        Google Drive Credential
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div 
+                    style={{ 
+                      color: "var(--accent-color)", 
+                      opacity: 0.8,
+                      transition: "var(--transition-smooth)"
+                    }}
+                    className="cert-link-icon"
+                  >
+                    <FaExternalLinkAlt size={16} />
+                  </div>
+                </div>
+              </a>
+            </Col>
           ))}
-        </div>
+        </Row>
       </Container>
     </section>
   );

@@ -42,7 +42,7 @@ const Projects = () => {
                     {project.title}
                   </h3>
                   
-                  <p className="small mb-4" style={{ color: "var(--text-secondary)", flexGrow: 1 }}>
+                  <p className="small mb-4 justify-text" style={{ color: "var(--text-secondary)", flexGrow: 1 }}>
                     {project.description}
                   </p>
                 </div>
@@ -68,9 +68,10 @@ const Projects = () => {
                   </div>
                   
                   <button 
-                    disabled 
-                    className="btn btn-outline-accent w-100 btn-sm d-flex align-items-center justify-content-center gap-2"
-                    style={{ opacity: 0.6, cursor: "not-allowed" }}
+                    type="button"
+                    onClick={(e) => e.preventDefault()}
+                    className="btn btn-outline-accent btn-sm d-inline-flex align-items-center justify-content-center gap-2"
+                    style={{ padding: "0.4rem 1.2rem", width: "fit-content" }}
                   >
                     Demo Link <FaExternalLinkAlt size={12} />
                   </button>

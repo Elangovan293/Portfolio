@@ -79,9 +79,14 @@ export const education = [
 ];
 
 export const certifications = [
-  "AI Full Stack Development",
-  "Oracle SQL",
-  "Basics of Python"
+  {
+    title: "AI Full Stack Development",
+    link: "https://drive.google.com/file/d/11cT2cXDf1AQQy_A8KL9KZGBlQM5_0KN7/view?usp=drivesdk"
+  },
+  {
+    title: "Basics of Python",
+    link: "https://drive.google.com/file/d/1e2RW6P9CIgUc9g1JJNVdj0TysyMxqOSf/view?usp=drivesdk"
+  }
 ];
 
 // TODO: Replace with real project repos/demo links when available
@@ -91,20 +96,23 @@ export const projects = [
     title: "AI Full Stack Mini Project 1",
     status: "Coming Soon",
     description: "A prototype system built using Python backend services and standard frontend user interfaces, integrating basic machine learning models.",
-    tags: ["Python", "React", "Node.js", "AI"]
+    tags: ["Python", "React", "Node.js", "AI"],
+    demoUrl: "#" // Change this to your live demo URL (e.g. "https://my-demo-1.com")
   },
   {
     id: 2,
     title: "AI Full Stack Mini Project 2",
     status: "Coming Soon",
     description: "A database-driven web application highlighting AI automation and API routing capabilities, connected to robust backend endpoints.",
-    tags: ["Python", "React", "Express", "SQL"]
+    tags: ["Python", "React", "Express", "SQL"],
+    demoUrl: "#" // Change this to your live demo URL
   },
   {
     id: 3,
     title: "AI Full Stack Mini Project 3",
     status: "Coming Soon",
     description: "An interactive digital UI built to analyze data parameters and display predictive maintenance statistics dynamically.",
-    tags: ["React", "Node.js", "Canva", "AI"]
+    tags: ["React", "Node.js", "Canva", "AI"],
+    demoUrl: "#" // Change this to your live demo URL
   }
 ];

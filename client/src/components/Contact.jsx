@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Alert, Spinner } from "react-bootstrap";
-import { FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 import { personalInfo } from "../data/data";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -37,41 +38,32 @@ const Contact = () => {
     setLoading(true);
     setStatus({ show: false, success: false, message: "" });
 
-    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
-
     try {
-      const response = await fetch(`${API_URL}/api/contact`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
+      await emailjs.send(
+        "service_z127bdf",
+        "template_3sto4j8",
+        {
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         },
-        body: JSON.stringify(formData)
+        "jWsdKKGvofNmkN57o"
+      );
+
+      setStatus({
+        show: true,
+        success: true,
+        message: "Message sent! I'll get back to you soon."
       });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setStatus({
-          show: true,
-          success: true,
-          message: data.message || "Your message was sent successfully!"
-        });
-        // Reset form
-        setFormData({ name: "", email: "", message: "" });
-        setValidated(false);
-      } else {
-        setStatus({
-          show: true,
-          success: false,
-          message: data.message || "Something went wrong. Please try again."
-        });
-      }
+      // Reset form
+      setFormData({ name: "", email: "", message: "" });
+      setValidated(false);
     } catch (error) {
-      console.error("Error submitting contact form:", error);
+      console.error("EmailJS Error:", error);
       setStatus({
         show: true,
         success: false,
-        message: "Unable to connect to the mail server. Please check your network or try again later."
+        message: "Something went wrong. Please try again."
       });
     } finally {
       setLoading(false);
@@ -79,10 +71,10 @@ const Contact = () => {
   };
 
   return (
-    <section 
-      id="contact" 
-      className="py-5" 
-      style={{ 
+    <section
+      id="contact"
+      className="py-5"
+      style={{
         backgroundColor: "var(--bg-secondary)",
         transition: "var(--transition-smooth)"
       }}
@@ -94,15 +86,15 @@ const Contact = () => {
           {/* Contact Details Panel */}
           <Col lg={5} data-aos="fade-right" data-aos-duration="1000">
             <h3 className="h4 mb-4" style={{ fontFamily: "var(--font-heading)" }}>Contact Information</h3>
-            <p className="mb-5" style={{ color: "var(--text-secondary)" }}>
+            <p className="mb-5 justify-text" style={{ color: "var(--text-secondary)" }}>
               If you have any questions or would like to discuss working together, feel free to contact me via email, phone, or LinkedIn!
             </p>
 
             <div className="d-flex flex-column gap-4">
               {/* Phone contact */}
               <div className="d-flex align-items-center gap-3">
-                <a 
-                  href={`tel:${personalInfo.phone}`} 
+                <a
+                  href={`tel:${personalInfo.phone}`}
                   className="social-icon-link flex-shrink-0"
                   aria-label="Call Elangovan"
                 >
@@ -110,9 +102,9 @@ const Contact = () => {
                 </a>
                 <div>
                   <h4 className="h6 mb-1 text-muted" style={{ fontSize: "0.85rem" }}>Call Me</h4>
-                  <a 
-                    href={`tel:${personalInfo.phone}`} 
-                    className="fw-semibold" 
+                  <a
+                    href={`tel:${personalInfo.phone}`}
+                    className="fw-semibold"
                     style={{ color: "var(--text-primary)", textDecoration: "none", fontSize: "1.1rem" }}
                   >
                     +91 {personalInfo.phone}
@@ -122,8 +114,8 @@ const Contact = () => {
 
               {/* Email contact */}
               <div className="d-flex align-items-center gap-3">
-                <a 
-                  href={`mailto:${personalInfo.email}`} 
+                <a
+                  href={`mailto:${personalInfo.email}`}
                   className="social-icon-link flex-shrink-0"
                   aria-label="Email Elangovan"
                 >
@@ -131,9 +123,9 @@ const Contact = () => {
                 </a>
                 <div>
                   <h4 className="h6 mb-1 text-muted" style={{ fontSize: "0.85rem" }}>Email Me</h4>
-                  <a 
-                    href={`mailto:${personalInfo.email}`} 
-                    className="fw-semibold" 
+                  <a
+                    href={`mailto:${personalInfo.email}`}
+                    className="fw-semibold"
                     style={{ color: "var(--text-primary)", textDecoration: "none", fontSize: "1.1rem" }}
                   >
                     {personalInfo.email}
@@ -146,19 +138,19 @@ const Contact = () => {
             <div className="mt-5">
               <h3 className="h6 text-muted mb-3" style={{ textTransform: "uppercase", letterSpacing: "1.5px" }}>Connect Socially</h3>
               <div className="d-flex gap-3">
-                <a 
-                  href={personalInfo.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={personalInfo.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="social-icon-link"
                   aria-label="Github Profile"
                 >
                   <FaGithub />
                 </a>
-                <a 
-                  href={personalInfo.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={personalInfo.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="social-icon-link"
                   aria-label="LinkedIn Profile"
                 >
@@ -174,8 +166,8 @@ const Contact = () => {
               <h3 className="h4 mb-4" style={{ fontFamily: "var(--font-heading)" }}>Send Message</h3>
 
               {status.show && (
-                <Alert 
-                  variant={status.success ? "success" : "danger"} 
+                <Alert
+                  variant={status.success ? "success" : "danger"}
                   className="mb-4"
                   style={{
                     backgroundColor: status.success ? "rgba(40, 167, 69, 0.1)" : "rgba(220, 53, 69, 0.1)",
@@ -241,19 +233,24 @@ const Contact = () => {
                   </Form.Control.Feedback>
                 </Form.Group>
 
-                <Button 
-                  type="submit" 
-                  className="btn-accent w-100 py-3 d-flex align-items-center justify-content-center gap-2"
-                  disabled={loading}
-                >
-                  {loading ? (
-                    <>
-                      <Spinner animation="border" size="sm" /> Sending Message...
-                    </>
-                  ) : (
-                    "Send Message"
-                  )}
-                </Button>
+                <div className="d-flex justify-content-center mt-4">
+                  <Button
+                    type="submit"
+                    className="btn btn-accent d-inline-flex align-items-center justify-content-center gap-2"
+                    disabled={loading}
+                    style={{ padding: "12px 32px", width: "fit-content" }}
+                  >
+                    {loading ? (
+                      <>
+                        <Spinner animation="border" size="sm" /> Sending...
+                      </>
+                    ) : (
+                      <>
+                        Send Message <FaPaperPlane size={14} />
+                      </>
+                    )}
+                  </Button>
+                </div>
               </Form>
             </div>
           </Col>

@@ -50,7 +50,7 @@ const Experience = () => {
                   </span>
                 </div>
                 
-                <p className="mb-4 text-muted" style={{ color: "var(--text-secondary)" }}>
+                <p className="mb-4 text-muted justify-text" style={{ color: "var(--text-secondary)" }}>
                   {exp.description}
                 </p>
                 

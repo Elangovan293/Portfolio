@@ -1,47 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Default Dark Mode colors */
-  --bg-primary: #0a0d14;
-  --bg-secondary: #111625;
-  --bg-tertiary: #192035;
-  --text-primary: #f3f4f6;
-  --text-secondary: #9ca3af;
-  --accent-color: #00f0ff; /* Electric Teal */
-  --accent-rgb: 0, 240, 255;
-  --accent-hover: #00c8ff;
-  --accent-glow: rgba(0, 240, 255, 0.25);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
-  --border-color: rgba(255, 255, 255, 0.06);
-  --navbar-bg: rgba(10, 13, 20, 0.85);
-  --glass-bg: rgba(17, 22, 37, 0.65);
-  
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Light Mode values */
-[data-theme="light"] {
+  /* Default Light Mode colors */
   --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
   --bg-tertiary: #f1f5f9;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --accent-color: #0d6efd; /* Electric Blue */
-  --accent-rgb: 13, 110, 253;
-  --accent-hover: #0a58ca;
-  --accent-glow: rgba(13, 110, 253, 0.15);
-  --card-shadow: 0 10px 30px -10px rgba(148, 163, 184, 0.2);
-  --border-color: rgba(15, 23, 42, 0.06);
+  --text-primary: #1a1a1a;
+  --text-secondary: #4a5568;
+  --accent-color: #0d9488; /* Vibrant Teal-600 */
+  --accent-rgb: 13, 148, 136;
+  --accent-hover: #0f766e; /* Teal-700 */
+  --accent-glow: rgba(13, 148, 136, 0.15);
+  --card-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.15), 0 2px 8px -1px rgba(148, 163, 184, 0.1);
+  --border-color: rgba(15, 23, 42, 0.08);
   --navbar-bg: rgba(248, 250, 252, 0.85);
-  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: rgba(255, 255, 255, 0.85);
+
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html,
+body {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#root,
+main {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
 }
 
 html {
@@ -57,7 +55,27 @@ body {
   line-height: 1.6;
 }
 
-h1, h2, h3, h4, h5, h6 {
+.justify-text {
+  text-align: justify;
+  text-justify: inter-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;
+}
+
+@media (max-width: 768px) {
+  .justify-text:not(.glass-card *, .core-skill-card *) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-heading);
   font-weight: 700;
   color: var(--text-primary);
@@ -102,7 +120,7 @@ h1, h2, h3, h4, h5, h6 {
   transition: var(--transition-smooth);
 }
 
-.nav-link-custom:hover, 
+.nav-link-custom:hover,
 .nav-link-custom.active {
   color: var(--accent-color) !important;
 }
@@ -136,9 +154,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .glass-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   border-color: rgba(var(--accent-rgb), 0.25);
-  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.4), 0 0 15px rgba(var(--accent-rgb), 0.1);
+  box-shadow: 0 20px 40px -15px rgba(148, 163, 184, 0.3), 0 0 20px rgba(var(--accent-rgb), 0.15);
 }
 
 /* Rounded Profile Glowing Picture */
@@ -176,21 +194,40 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Animations */
 @keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-12px); }
-  100% { transform: translateY(0px); }
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 @keyframes float-glow {
-  0% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
-  50% { transform: translateY(-12px) rotate(180deg); opacity: 0.8; }
-  100% { transform: translateY(0px) rotate(360deg); opacity: 0.6; }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+    opacity: 0.6;
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(180deg);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    opacity: 0.6;
+  }
 }
 
 /* Buttons */
 .btn-accent {
   background-color: var(--accent-color);
-  color: #0b0f19 !important;
+  color: #ffffff !important;
   border: 1px solid var(--accent-color);
   font-weight: 600;
   border-radius: 8px;
@@ -333,15 +370,18 @@ h1, h2, h3, h4, h5, h6 {
   .timeline-vertical::after {
     left: 20px;
   }
+
   .timeline-item {
     width: 100%;
     padding-left: 50px;
     padding-right: 0;
   }
+
   .timeline-item-left,
   .timeline-item-right {
     left: 0;
   }
+
   .timeline-badge {
     left: 10px !important;
   }
@@ -370,27 +410,7 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 8px 18px var(--accent-glow);
 }
 
-/* Dark Mode Toggle Switch Button */
-.theme-toggle-btn {
-  background: transparent;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: var(--transition-smooth);
-  font-size: 1.1rem;
-}
 
-.theme-toggle-btn:hover {
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-  box-shadow: 0 0 10px var(--accent-glow);
-}
 
 /* Form Styles */
 .form-control-custom {
@@ -406,6 +426,16 @@ h1, h2, h3, h4, h5, h6 {
   border-color: var(--accent-color) !important;
   box-shadow: 0 0 8px var(--accent-glow) !important;
   outline: 0 !important;
+}
+
+.form-control-custom::placeholder {
+  color: var(--text-secondary) !important;
+  opacity: 0.65 !important;
+}
+
+/* Override Bootstrap text-muted utility to ensure text remains readable in both themes */
+.text-muted {
+  color: var(--text-secondary) !important;
 }
 
 /* Certifications Badge Chips */
@@ -440,7 +470,7 @@ h1, h2, h3, h4, h5, h6 {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0a0d14;
+  background-color: var(--bg-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -457,7 +487,7 @@ h1, h2, h3, h4, h5, h6 {
 .preloader-spinner {
   width: 80px;
   height: 80px;
-  border: 4px solid rgba(0, 240, 255, 0.1);
+  border: 4px solid rgba(13, 148, 136, 0.1);
   border-left-color: var(--accent-color);
   border-radius: 50%;
   animation: preloader-spin 1s linear infinite;
@@ -475,10 +505,60 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @keyframes preloader-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes preloader-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.95); text-shadow: 0 0 5px rgba(var(--accent-rgb), 0.1); }
-  50% { opacity: 1; transform: scale(1.05); text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.6); }
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(0.95);
+    text-shadow: 0 0 5px rgba(var(--accent-rgb), 0.1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+    text-shadow: 0 0 20px rgba(var(--accent-rgb), 0.6);
+  }
+}
+
+/*
+ * Mobile Navigation Drawer
+ * The mobile drawer is now a fully custom React element in Navbar.jsx,
+ * rendered with 100% inline styles for guaranteed specificity over Bootstrap.
+ * No CSS overrides for .navbar-collapse are needed here anymore.
+ */
+
+/* Custom Close Button (kept for potential reuse) */
+.btn-close-custom {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 0.2rem;
+  line-height: 1;
+  transition: var(--transition-smooth);
+}
+
+.btn-close-custom:hover {
+  color: var(--accent-color);
+  transform: rotate(90deg);
+}
+
+/* Footer Link Styles */
+.footer-link {
+  color: var(--text-secondary) !important;
+  text-decoration: none;
+  transition: var(--transition-smooth) !important;
+}
+
+.footer-link:hover {
+  color: var(--accent-color) !important;
+  padding-left: 2px;
 }
