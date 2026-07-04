@@ -70,6 +70,16 @@ body {
   }
 }
 
+@media (max-width: 767.98px) {
+  .core-skill-card .justify-text {
+    text-align: center;
+    text-justify: auto;
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    hyphens: none;
+  }
+}
+
 h1,
 h2,
 h3,
