@@ -47,7 +47,9 @@ const Contact = () => {
           email: formData.email,
           message: formData.message,
         },
-        "jWsdKKGvofNmkN57o"
+        {
+          publicKey: "WcGc0subgGXkC0rW8",
+        }
       );
 
       setStatus({
@@ -60,6 +62,7 @@ const Contact = () => {
       setValidated(false);
     } catch (error) {
       console.error("EmailJS Error:", error);
+      console.error("EmailJS Error details:", JSON.stringify(error, null, 2));
       setStatus({
         show: true,
         success: false,

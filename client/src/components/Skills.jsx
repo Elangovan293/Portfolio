@@ -80,7 +80,7 @@ const Skills = () => {
                   <h4 className="h5 mb-3" style={{ fontFamily: "var(--font-heading)" }}>
                     {skill.name}
                   </h4>
-                  <p className="small mb-0 justify-text" style={{ color: "var(--text-secondary)" }}>
+                  <p className="small mb-0" style={{ color: "var(--text-secondary)" }}>
                     {skill.description}
                   </p>
                 </div>
