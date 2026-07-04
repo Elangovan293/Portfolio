@@ -1,5 +1,4 @@
-import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { motion } from "framer-motion";
 import * as Icons from "react-icons/fa";
 import { technicalSkills, coreSkills } from "../data/data";
@@ -26,14 +25,14 @@ const Skills = () => {
         {/* Technical Skills Sub-section */}
         <Row className="mb-5 align-items-center">
           <Col lg={12} className="mb-4">
-            <h3 className="h4 mb-4 text-center text-lg-start" style={{ fontFamily: "var(--font-heading)" }}>
+            <h3 className="h4 mb-4 text-center" style={{ fontFamily: "var(--font-heading)" }}>
               Technical Expertise
             </h3>
           </Col>
           
-          <Row className="g-4">
+          <Row className="g-4 justify-content-center">
             {technicalSkills.map((skill, index) => (
-              <Col md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
+              <Col xs={12} sm={10} md={6} key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="glass-card p-4">
                   <div className="skill-progress-container">
                     <div className="skill-progress-label">
@@ -65,14 +64,14 @@ const Skills = () => {
         {/* Core Skills Sub-section */}
         <Row className="mt-5">
           <Col lg={12} className="mb-4">
-            <h3 className="h4 mb-4 text-center text-lg-start" style={{ fontFamily: "var(--font-heading)" }}>
+            <h3 className="h4 mb-4 text-center" style={{ fontFamily: "var(--font-heading)" }}>
               Core Competencies
             </h3>
           </Col>
           
           <Row className="g-4 justify-content-center">
             {coreSkills.map((skill, index) => (
-              <Col md={6} lg={4} key={index} data-aos="fade-up" data-aos-delay={index * 150}>
+              <Col xs={12} sm={10} md={6} lg={4} key={index} data-aos="fade-up" data-aos-delay={index * 150}>
                 <div className="glass-card core-skill-card">
                   <div className="core-skill-icon-wrapper">
                     {getIcon(skill.icon)}

@@ -71,7 +71,6 @@ const drawerNavLinkBase = {
   textDecoration: "none",
   background: "transparent",
   border: "none",
-  borderBottom: "1px solid rgba(15, 23, 42, 0.08)",
   textAlign: "left",
   cursor: "pointer",
   opacity: 1,
