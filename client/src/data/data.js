@@ -86,6 +86,10 @@ export const certifications = [
   {
     title: "Basics of Python",
     link: "https://drive.google.com/file/d/1e2RW6P9CIgUc9g1JJNVdj0TysyMxqOSf/view?usp=drivesdk"
+  },
+  {
+    title: "Generative AI",
+    link: "<GOOGLE_DRIVE_SHARE_LINK_HERE>"
   }
 ];
 
