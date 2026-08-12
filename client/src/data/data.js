@@ -89,7 +89,7 @@ export const certifications = [
   },
   {
     title: "Generative AI",
-    link: "<GOOGLE_DRIVE_SHARE_LINK_HERE>"
+    link: "/assets/certificates/certificate-genai.pdf"
   }
 ];
 
